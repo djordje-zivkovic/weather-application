@@ -2,16 +2,17 @@ import InputField from './components/InputField/InputField';
 import WeatherDisplayAverage from './components/WeatherDisplayAverage/WeatherDisplayAverage';
 import WeatherDisplayDaily from './components/WeatherDisplayDaily/WeatherDisplayDaily';
 import Api from './API/Api';
+import './App.scss'
+import { useState } from 'react';
 
-function App() {
+
+const App = () => {
+
   return (
-    <>
-        <InputField />
-        <WeatherDisplayAverage />
-        <WeatherDisplayDaily />
+      <>
         <Api />
-    </>
-  );
+      </>
+  )
 }
 
 export default App;
