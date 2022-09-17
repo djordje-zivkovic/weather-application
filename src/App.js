@@ -14,8 +14,6 @@ const App = () => {
   const [allTemperatures, setAllTemperatures] = useState([]);
   // average temperature for one day
   const [dailyAverageTemperatures, setDailyAverageTemperatures] = useState();
-  // average temperature for 5 days
-  const [totalAverageTemperature, setTotalAverageTemperature] = useState();
   // country code from API
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
   // country code from flag select
@@ -44,7 +42,6 @@ const App = () => {
   // prouciti dalje
 
   useEffect(() => {
-    initTotalAverageTemperatures(allTemperatures);
     initDailyAverageTemperature(allTemperatures);
   }, [allTemperatures]);
 
@@ -61,14 +58,6 @@ const App = () => {
       return periodTemperature.main.temp;
     });
     setAllTemperatures(temperatures);
-  };
-
-  const initTotalAverageTemperatures = (allTemperatures) => {
-    if (allTemperatures.length) {
-      const _totalAverageTemperature =
-        allTemperatures.reduce((a, b) => a + b, 0) / allTemperatures.length;
-      setTotalAverageTemperature(_totalAverageTemperature.toFixed(2));
-    }
   };
 
   const initDailyAverageTemperature = (allTemperatures) => {
@@ -91,11 +80,11 @@ const App = () => {
 
   return (
     <div
-      style={{
-        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
-          totalAverageTemperature ? 50 - totalAverageTemperature : 50
-        }%, #FA9454 100%`,
-      }}
+    // style={{
+    //   background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+    //     totalAverageTemperature ? 50 - totalAverageTemperature : 50
+    //   }%, #FA9454 100%`,
+    // }}
     >
       <InputField
         setQuery={setQuery}
@@ -104,13 +93,9 @@ const App = () => {
         setCountryTyped={setCountryTyped}
         icon={icon}
       />
-      {countryTyped == countryTwoCharacter &&
-      totalAverageTemperature &&
-      dailyAverageTemperatures ? (
+      {countryTyped == countryTwoCharacter && dailyAverageTemperatures ? (
         <div>
-          <WeatherDisplayAverage
-            totalAverageTemperature={totalAverageTemperature}
-          />
+          <WeatherDisplayAverage allTemperatures={allTemperatures} />
           <WeatherDisplayDaily
             dailyAverageTemperatures={dailyAverageTemperatures}
           />
