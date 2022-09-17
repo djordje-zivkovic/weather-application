@@ -12,8 +12,6 @@ const App = () => {
   const [weather, setWeather] = useState({});
   // list of temperatures for 5 days - 40 temperatures
   const [allTemperatures, setAllTemperatures] = useState([]);
-  // average temperature for one day
-  const [dailyAverageTemperatures, setDailyAverageTemperatures] = useState();
   // country code from API
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
   // country code from flag select
@@ -41,10 +39,6 @@ const App = () => {
   // };
   // prouciti dalje
 
-  useEffect(() => {
-    initDailyAverageTemperature(allTemperatures);
-  }, [allTemperatures]);
-
   // if (weather.list) {
   //   initTotalAverageTemperatures(allTemperatures);
   //   initDailyAverageTemperature(allTemperatures);
@@ -58,24 +52,6 @@ const App = () => {
       return periodTemperature.main.temp;
     });
     setAllTemperatures(temperatures);
-  };
-
-  const initDailyAverageTemperature = (allTemperatures) => {
-    if (allTemperatures.length) {
-      const temperaturesCopy = [...allTemperatures];
-      const dailyAverageTemperatureList = [];
-      let dailyTemperaturesList = [];
-      for (let i = 0; i < allTemperatures.length / 8; i++) {
-        dailyTemperaturesList.push(temperaturesCopy.splice(0, 8));
-      }
-      dailyTemperaturesList.map((dailyTemperatures) => {
-        const dailyTemperature =
-          dailyTemperatures.reduce((a, b) => a + b, 0) /
-          dailyTemperatures.length;
-        dailyAverageTemperatureList.push(dailyTemperature.toFixed(2));
-      });
-      setDailyAverageTemperatures(dailyAverageTemperatureList);
-    }
   };
 
   return (
@@ -93,12 +69,10 @@ const App = () => {
         setCountryTyped={setCountryTyped}
         icon={icon}
       />
-      {countryTyped == countryTwoCharacter && dailyAverageTemperatures ? (
+      {countryTyped == countryTwoCharacter ? (
         <div>
           <WeatherDisplayAverage allTemperatures={allTemperatures} />
-          <WeatherDisplayDaily
-            dailyAverageTemperatures={dailyAverageTemperatures}
-          />
+          <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>
       ) : (
         ""
