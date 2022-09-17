@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./InputField.scss";
 import ReactFlagsSelect from "react-flags-select";
+import customLabels from "../../assets/custom-labels";
 
 const InputField = (props) => {
   //mora biti dvokarakterni
@@ -10,8 +11,12 @@ const InputField = (props) => {
     <>
       <ReactFlagsSelect
         selected={country}
-        onSelect={(country) => setCountry(country)}
+        onSelect={(country) => {
+          setCountry(country);
+          props.setCountryTyped(country);
+        }}
         className="flagInput"
+        customLabels={customLabels}
         searchable
       />
 
