@@ -17,7 +17,11 @@ const WeatherDisplayAverage = ({ allTemperatures }) => {
     initTotalAverageTemperatures(allTemperatures);
   }, [allTemperatures]);
 
-  return <div>{totalAverageTemperature}</div>;
+  return (
+    <div>
+      {totalAverageTemperature ? <div>{totalAverageTemperature}</div> : ""}
+    </div>
+  );
 };
 
 export default WeatherDisplayAverage;
