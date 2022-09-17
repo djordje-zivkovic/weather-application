@@ -14,9 +14,9 @@ const App = () => {
   const [dailyAverageTemperatures, setDailyAverageTemperatures] = useState();
   // average temperature for 5 days
   const [totalAverageTemperature, setTotalAverageTemperature] = useState();
-  // country code
+  // country code from API
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
-  // Da li se slaze drzavni dvokarakterni kod sa unesenim gradom
+  // country code from flag select
   const [countryTyped, setCountryTyped] = useState("");
 
   const keyPressHandler = (event) => {
@@ -30,8 +30,6 @@ const App = () => {
       }
     }
   };
-
-  console.log(countryTyped);
 
   // prouciti dalje
   useEffect(() => {
@@ -83,12 +81,12 @@ const App = () => {
         setCountryTyped={setCountryTyped}
       />
 
-      {totalAverageTemperature && (
+      {totalAverageTemperature && countryTyped == countryTwoCharacter && (
         <WeatherDisplayAverage
           totalAverageTemperature={totalAverageTemperature}
         />
       )}
-      {dailyAverageTemperatures && (
+      {dailyAverageTemperatures && countryTyped == countryTwoCharacter && (
         <div className="container" style={{ display: "flex", gap: "1em" }}>
           <WeatherDisplayDaily
             dailyAverageTemperatures={dailyAverageTemperatures}
