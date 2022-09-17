@@ -8,7 +8,13 @@ const InputField = (props) => {
   const [country, setCountry] = useState();
 
   return (
-    <>
+    <div className="container">
+      <img
+        src={`https://openweathermap.org/img/w/${
+          props.icon ? props.icon : "10d"
+        }.png`}
+      />
+
       <ReactFlagsSelect
         selected={country}
         onSelect={(country) => {
@@ -27,7 +33,7 @@ const InputField = (props) => {
         value={props.query}
         onKeyPress={props.keyPressHandler}
       />
-    </>
+    </div>
   );
 };
 

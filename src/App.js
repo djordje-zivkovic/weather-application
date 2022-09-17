@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [query, setQuery] = useState("");
 
+  // full API
+  const [weather, setWeather] = useState({});
   // list of temperatures for 5 days - 40 temperatures
   const [allTemperatures, setAllTemperatures] = useState([]);
   // average temperature for one day
@@ -18,24 +20,40 @@ const App = () => {
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
   // country code from flag select
   const [countryTyped, setCountryTyped] = useState("");
+  // icon
+  const [icon, setIcon] = useState("");
 
   const keyPressHandler = (event) => {
     if (event.key === "Enter") {
       if (query) {
         getData(query).then((result) => {
           initAllTemperatures(result.list);
+          setWeather(result);
           setQuery("");
           setCountryTwoCharacter(result.city.country);
+          setIcon(result.list[0].weather[0].icon);
         });
       }
     }
   };
 
+  // const init = () => {
+  //   initTotalAverageTemperatures(allTemperatures);
+  //   initDailyAverageTemperature(allTemperatures);
+  // };
   // prouciti dalje
+
   useEffect(() => {
     initTotalAverageTemperatures(allTemperatures);
     initDailyAverageTemperature(allTemperatures);
   }, [allTemperatures]);
+
+  // if (weather.list) {
+  //   initTotalAverageTemperatures(allTemperatures);
+  //   initDailyAverageTemperature(allTemperatures);
+  // } else {
+  //   return;
+  // }
 
   const initAllTemperatures = (temperatureList) => {
     console.log(temperatureList);
@@ -49,7 +67,6 @@ const App = () => {
     if (allTemperatures.length) {
       const _totalAverageTemperature =
         allTemperatures.reduce((a, b) => a + b, 0) / allTemperatures.length;
-
       setTotalAverageTemperature(_totalAverageTemperature.toFixed(2));
     }
   };
@@ -73,25 +90,33 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+          totalAverageTemperature ? 50 - totalAverageTemperature : 50
+        }%, #FA9454 100%`,
+      }}
+    >
       <InputField
         setQuery={setQuery}
         keyPressHandler={keyPressHandler}
         query={query}
         setCountryTyped={setCountryTyped}
+        icon={icon}
       />
-
-      {totalAverageTemperature && countryTyped == countryTwoCharacter && (
-        <WeatherDisplayAverage
-          totalAverageTemperature={totalAverageTemperature}
-        />
-      )}
-      {dailyAverageTemperatures && countryTyped == countryTwoCharacter && (
-        <div className="container" style={{ display: "flex", gap: "1em" }}>
+      {countryTyped == countryTwoCharacter &&
+      totalAverageTemperature &&
+      dailyAverageTemperatures ? (
+        <div>
+          <WeatherDisplayAverage
+            totalAverageTemperature={totalAverageTemperature}
+          />
           <WeatherDisplayDaily
             dailyAverageTemperatures={dailyAverageTemperatures}
           />
         </div>
+      ) : (
+        ""
       )}
     </div>
   );
