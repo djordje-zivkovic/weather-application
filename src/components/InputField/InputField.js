@@ -11,7 +11,9 @@ const InputField = (props) => {
     <div className="container">
       <img
         src={`https://openweathermap.org/img/w/${
-          props.icon ? props.icon : "10d"
+          props.icon && country == props.countryTwoCharacter
+            ? props.icon
+            : "10d"
         }.png`}
       />
 
@@ -31,8 +33,12 @@ const InputField = (props) => {
         placeholder="Search..."
         onChange={(e) => props.setQuery(e.target.value)}
         value={props.query}
-        onKeyPress={props.keyPressHandler}
+        onKeyPress={props.handleKeyPress}
       />
+
+      <button type="submit" onClick={props.submit}>
+        {" "}
+      </button>
     </div>
   );
 };

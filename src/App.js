@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [query, setQuery] = useState("");
 
-  // full API
-  const [weather, setWeather] = useState({});
   // list of temperatures for 5 days - 40 temperatures
   const [allTemperatures, setAllTemperatures] = useState([]);
   // country code from API
@@ -18,13 +16,15 @@ const App = () => {
   const [countryTyped, setCountryTyped] = useState("");
   // icon
   const [icon, setIcon] = useState("");
+  // get AverageTemp for gradient
+  const [AverageTemp, setAverageTemp] = useState();
 
-  const keyPressHandler = (event) => {
-    if (event.key === "Enter") {
+  const submit = () => {
+    {
+      console.log(query);
       if (query) {
         getData(query).then((result) => {
           initAllTemperatures(result.list);
-          setWeather(result);
           setQuery("");
           setCountryTwoCharacter(result.city.country);
           setIcon(result.list[0].weather[0].icon);
@@ -33,18 +33,11 @@ const App = () => {
     }
   };
 
-  // const init = () => {
-  //   initTotalAverageTemperatures(allTemperatures);
-  //   initDailyAverageTemperature(allTemperatures);
-  // };
-  // prouciti dalje
-
-  // if (weather.list) {
-  //   initTotalAverageTemperatures(allTemperatures);
-  //   initDailyAverageTemperature(allTemperatures);
-  // } else {
-  //   return;
-  // }
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      submit();
+    }
+  };
 
   const initAllTemperatures = (temperatureList) => {
     console.log(temperatureList);
@@ -56,22 +49,27 @@ const App = () => {
 
   return (
     <div
-    // style={{
-    //   background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
-    //     totalAverageTemperature ? 50 - totalAverageTemperature : 50
-    //   }%, #FA9454 100%`,
-    // }}
+      style={{
+        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+          AverageTemp ? 50 - AverageTemp : 50
+        }%, #FA9454 100%`,
+      }}
     >
       <InputField
         setQuery={setQuery}
-        keyPressHandler={keyPressHandler}
+        submit={submit}
+        handleKeyPress={handleKeyPress}
         query={query}
         setCountryTyped={setCountryTyped}
+        countryTwoCharacter={countryTwoCharacter}
         icon={icon}
       />
       {countryTyped == countryTwoCharacter ? (
         <div>
-          <WeatherDisplayAverage allTemperatures={allTemperatures} />
+          <WeatherDisplayAverage
+            allTemperatures={allTemperatures}
+            setAverageTemp={setAverageTemp}
+          />
           <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>
       ) : (
