@@ -1,20 +1,29 @@
-import React from 'react';
-import './InputField.scss'
+import React, { useState } from "react";
+import "./InputField.scss";
+import ReactFlagsSelect from "react-flags-select";
 
+const InputField = (props) => {
+  //mora biti dvokarakterni
+  const [country, setCountry] = useState();
 
-const InputField = () => {
+  return (
+    <>
+      <ReactFlagsSelect
+        selected={country}
+        onSelect={(country) => setCountry(country)}
+        className="flagInput"
+        searchable
+      />
 
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(e) => props.setQuery(e.target.value)}
+        value={props.query}
+        onKeyPress={props.keyPressHandler}
+      />
+    </>
+  );
+};
 
-
-    return (
-        <div className="inputField">
-            <input 
-                className="cityInputField"
-                type="text"
-                placeholder="search for city"
-            />
-        </div> 
-    )
-}
-
-export default InputField
+export default InputField;

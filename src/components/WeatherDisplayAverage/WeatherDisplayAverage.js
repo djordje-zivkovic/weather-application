@@ -1,10 +1,8 @@
-import React from 'react'
-import './WeatherDisplayAverage.scss'
+import React from "react";
+import "./WeatherDisplayAverage.scss";
 
-const WeatherDisplayAverage = () => {
-  return (
-    <div>WeatherDisplayAverage</div>
-  )
-}
+const WeatherDisplayAverage = ({ totalAverageTemperature }) => {
+  return <div>{totalAverageTemperature}</div>;
+};
 
-export default WeatherDisplayAverage
+export default WeatherDisplayAverage;
