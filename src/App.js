@@ -21,7 +21,6 @@ const App = () => {
 
   const submit = () => {
     {
-      console.log(query);
       if (query) {
         getData(query).then((result) => {
           initAllTemperatures(result.list);
