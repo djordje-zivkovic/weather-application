@@ -18,19 +18,29 @@ const App = () => {
   const [icon, setIcon] = useState("");
   // get AverageTemp for gradient
   const [AverageTemp, setAverageTemp] = useState();
+  // get date from API
+  const [endDate, setEndDate] = useState("");
+  const [firstDate, setFirstDate] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const submit = () => {
     {
       if (query) {
+        setLoading(true);
         getData(query).then((result) => {
           initAllTemperatures(result.list);
           setQuery("");
           setCountryTwoCharacter(result.city.country);
           setIcon(result.list[0].weather[0].icon);
+          setFirstDate(result.list[0].dt_txt);
+          setEndDate(result.list[39].dt_txt);
+          setLoading(false);
         });
       }
     }
   };
+
+  console.log(loading);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -48,11 +58,11 @@ const App = () => {
 
   return (
     <div
-      // style={{
-      //   background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
-      //     AverageTemp ? 50 - AverageTemp : 50
-      //   }%, #FA9454 100%`,
-      // }}
+      style={{
+        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+          AverageTemp ? 50 - AverageTemp : 50
+        }%, #FA9454 100%`,
+      }}
       className="App"
     >
       <InputField
@@ -63,13 +73,15 @@ const App = () => {
         setCountryTyped={setCountryTyped}
         countryTwoCharacter={countryTwoCharacter}
         icon={icon}
-        AverageTemp={allTemperatures}
+        loading={loading}
       />
       {countryTyped == countryTwoCharacter ? (
         <div>
           <WeatherDisplayAverage
             allTemperatures={allTemperatures}
             setAverageTemp={setAverageTemp}
+            firstDate={firstDate}
+            endDate={endDate}
           />
           <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>

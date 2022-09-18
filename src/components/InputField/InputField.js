@@ -42,12 +42,15 @@ const InputField = (props) => {
         />
 
         <button type="submit" onClick={props.submit} className="search-button">
-          {/* <img
+          {props.loading ? (
+            <img
               className="loading-icon"
               src={loading_icon}
               alt="loading"
-            ></img> */}
-          <img className="search-icon" src={search_icon} alt="search"></img>
+            ></img>
+          ) : (
+            <img className="search-icon" src={search_icon} alt="search"></img>
+          )}
         </button>
       </div>
     </div>
