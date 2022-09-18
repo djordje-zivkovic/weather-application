@@ -48,11 +48,12 @@ const App = () => {
 
   return (
     <div
-      style={{
-        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
-          AverageTemp ? 50 - AverageTemp : 50
-        }%, #FA9454 100%`,
-      }}
+      // style={{
+      //   background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+      //     AverageTemp ? 50 - AverageTemp : 50
+      //   }%, #FA9454 100%`,
+      // }}
+      className="App"
     >
       <InputField
         setQuery={setQuery}
@@ -62,6 +63,7 @@ const App = () => {
         setCountryTyped={setCountryTyped}
         countryTwoCharacter={countryTwoCharacter}
         icon={icon}
+        AverageTemp={allTemperatures}
       />
       {countryTyped == countryTwoCharacter ? (
         <div>

@@ -34,7 +34,7 @@ const WeatherDisplayDaily = ({ allTemperatures }) => {
           {dailyAverageTemperatures.map((temp, index) => {
             return (
               <div className="daily-weather" key={index}>
-                {temp}
+                {temp}°C
               </div>
             );
           })}
