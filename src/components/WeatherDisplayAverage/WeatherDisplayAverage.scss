@@ -1,6 +1,10 @@
+@import "../../scss/variables.scss";
+
 .display-average-wrapper {
   color: red;
 }
 
 .display-average {
+  font-size: 100px;
+  color: $navyBlue;
 }

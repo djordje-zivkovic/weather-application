@@ -9,8 +9,8 @@ const WeatherDisplayAverage = ({ allTemperatures, setAverageTemp }) => {
     if (allTemperatures.length) {
       const _totalAverageTemperature =
         allTemperatures.reduce((a, b) => a + b, 0) / allTemperatures.length;
-      setTotalAverageTemperature(_totalAverageTemperature.toFixed(2));
-      setAverageTemp(_totalAverageTemperature.toFixed(2));
+      setTotalAverageTemperature(_totalAverageTemperature.toFixed(0));
+      setAverageTemp(_totalAverageTemperature.toFixed(0));
     }
   };
 
