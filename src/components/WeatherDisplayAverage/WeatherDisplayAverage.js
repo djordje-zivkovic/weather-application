@@ -9,6 +9,24 @@ const WeatherDisplayAverage = ({
 }) => {
   // average temperature for 5 days
   const [totalAverageTemperature, setTotalAverageTemperature] = useState();
+  //potrebno je fino sortirati datume kao sto zadatak nalaze
+  const [firstDateState, setFirstDateState] = useState();
+  const [endDateState, setEndDateState] = useState();
+  const [endMonth, setEndMonth] = useState();
+  const [firstMonth, setFirstMonth] = useState();
+
+  const options = { month: "long" };
+
+  useEffect(() => {
+    setFirstDateState(new Date(firstDate));
+    setEndDateState(new Date(endDate));
+    setFirstMonth(
+      new Intl.DateTimeFormat("en-US", options).format(firstDateState)
+    );
+    setEndMonth(
+      new Intl.DateTimeFormat("en-US", options).format(firstDateState)
+    );
+  }, [firstDate, endDate]);
 
   const initTotalAverageTemperatures = (allTemperatures) => {
     if (allTemperatures.length) {
@@ -23,17 +41,33 @@ const WeatherDisplayAverage = ({
     initTotalAverageTemperatures(allTemperatures);
   }, [allTemperatures]);
 
-  const firstDateFormated = new Date(firstDate);
-  console.log(firstDateFormated);
-  const endDateFormated = new Date(endDate);
-  console.log(endDateFormated);
-
   return (
     <div className="display-average-wrapper">
-      {totalAverageTemperature ? (
+      {totalAverageTemperature && firstDateState && endDateState ? (
         <div>
           <div>
-            {firstDate.split(" ")[0]} - {endDate.split(" ")[0]}
+            {firstMonth != endMonth &&
+            firstDateState.getFullYear() != endDateState.getFullYear() ? (
+              <div>
+                {firstDateState.getDate()} {firstMonth}{" "}
+                {firstDateState.getFullYear()} - {endDateState.getDate()}{" "}
+                {endMonth} {endDateState.getFullYear()}
+              </div>
+            ) : firstMonth == endMonth &&
+              firstDateState.getFullYear() == endDateState.getFullYear() ? (
+              <div>
+                {firstMonth} {firstDateState.getDate()} -{" "}
+                {endDateState.getDate()} {firstDateState.getFullYear()}
+              </div>
+            ) : firstMonth != endMonth &&
+              firstDateState.getFullYear() == endDateState.getFullYear() ? (
+              <div>
+                {firstDateState.getDate()} {firstMonth} -{" "}
+                {endDateState.getDate()} {endMonth} {endDateState.getFullYear()}
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
           <div className="display-average">{totalAverageTemperature}°C</div>
         </div>

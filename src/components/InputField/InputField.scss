@@ -76,27 +76,20 @@
     }
 
     .search-icon {
-        height: 20px;
-        animation: rotation 1s infinite linear;
-      }
+      height: 20px;
+    }
+
     &:hover {
       cursor: pointer;
     }
   }
 }
 
-// .search-button {
-//   background: yellow;
-//   border-style: none;
-//   position: absolute;
-//   right: 0;
-//   bottom: 10px;
-
-//   > .loadingIcon {
-//     height: 20px;
-//     animation: rotation 1s infinite linear;
-//   }
-
-//   &:hover {
-//     cursor: crosshair;
-//   }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

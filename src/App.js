@@ -18,7 +18,7 @@ const App = () => {
   const [icon, setIcon] = useState("");
   // get AverageTemp for gradient
   const [AverageTemp, setAverageTemp] = useState();
-  // get date from API
+  // get date from API{{
   const [endDate, setEndDate] = useState("");
   const [firstDate, setFirstDate] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,8 +39,6 @@ const App = () => {
       }
     }
   };
-
-  console.log(loading);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
