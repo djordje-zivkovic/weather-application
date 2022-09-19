@@ -1,5 +1,18 @@
+@import "../../scss/variables.scss";
 .weatherDisplayDailyContainer {
   display: flex;
-  color: red;
   gap: 1em;
+}
+
+.weekday {
+  color: $navyBlue;
+}
+
+.average-temp-number {
+  display: flex;
+  justify-content: center;
+}
+
+.celsius-sign-small {
+  font-size: 15px;
 }

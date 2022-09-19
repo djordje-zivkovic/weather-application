@@ -1,10 +1,23 @@
 @import "../../scss/variables.scss";
 
 .display-average-wrapper {
-  color: darkorchid;
+  color: white;
+  margin-top: 20px;
+}
+
+.date {
+  font-size: 15px;
+  font-weight: bolder;
+  color: $navyBlue;
 }
 
 .display-average {
+  display: flex;
+  justify-content: center;
   font-size: 100px;
-  color: $navyBlue;
+}
+
+.celsius-sign {
+  padding-top: 15px;
+  font-size: 25px;
 }

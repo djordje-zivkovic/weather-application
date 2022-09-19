@@ -27,6 +27,8 @@ const WeatherDisplayDaily = ({ allTemperatures }) => {
     initDailyAverageTemperature(allTemperatures);
   }, [allTemperatures]);
 
+  const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
   return (
     <div>
       {dailyAverageTemperatures ? (
@@ -34,7 +36,11 @@ const WeatherDisplayDaily = ({ allTemperatures }) => {
           {dailyAverageTemperatures.map((temp, index) => {
             return (
               <div className="daily-weather" key={index}>
-                {temp}°C
+                <div className="weekday">{weekday[index]}</div>
+                <div className="average-temp-number">
+                  <div>{Math.round(temp)}</div>
+                  <div className="celsius-sign-small">°C</div>
+                </div>
               </div>
             );
           })}

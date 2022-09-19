@@ -15,7 +15,7 @@ const WeatherDisplayAverage = ({
   const [endMonth, setEndMonth] = useState();
   const [firstMonth, setFirstMonth] = useState();
 
-  const options = { month: "long" };
+  const options = { month: "short" };
 
   useEffect(() => {
     setFirstDateState(new Date(firstDate));
@@ -45,7 +45,7 @@ const WeatherDisplayAverage = ({
     <div className="display-average-wrapper">
       {totalAverageTemperature && firstDateState && endDateState ? (
         <div>
-          <div>
+          <div className="date">
             {firstMonth != endMonth &&
             firstDateState.getFullYear() != endDateState.getFullYear() ? (
               <div>
@@ -69,7 +69,12 @@ const WeatherDisplayAverage = ({
               <div></div>
             )}
           </div>
-          <div className="display-average">{totalAverageTemperature}°C</div>
+          <div className="display-average">
+            <div className="display-average-temp">
+              {totalAverageTemperature}
+            </div>
+            <div className="celsius-sign">°C</div>
+          </div>
         </div>
       ) : (
         ""
