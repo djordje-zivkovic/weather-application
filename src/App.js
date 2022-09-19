@@ -92,9 +92,9 @@ const App = () => {
           />
           <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>
-      ) : countryTyped != countryTwoCharacter ||
-        loading == false ||
-        countryTwoCharacter ||
+      ) : (countryTyped != countryTwoCharacter &&
+          loading == false &&
+          countryTwoCharacter) ||
         error ? (
         <div className="error">Error: City not found</div>
       ) : (
