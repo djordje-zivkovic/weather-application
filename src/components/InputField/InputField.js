@@ -7,7 +7,7 @@ import loading_icon from "../../assets/loading_icon.svg";
 
 const InputField = (props) => {
   //mora biti dvokarakterni
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState("NL");
   const value = true;
 
   return (
