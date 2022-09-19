@@ -21,21 +21,30 @@ const App = () => {
   // get date from API{{
   const [endDate, setEndDate] = useState("");
   const [firstDate, setFirstDate] = useState("");
+  // from moment API starts to fetch to getting all data needed
   const [loading, setLoading] = useState(false);
+  // failed api catch
+  const [error, setError] = useState(false);
 
   const submit = () => {
     {
       if (query) {
         setLoading(true);
-        getData(query).then((result) => {
-          initAllTemperatures(result.list);
-          setQuery("");
-          setCountryTwoCharacter(result.city.country);
-          setIcon(result.list[0].weather[0].icon);
-          setFirstDate(result.list[0].dt_txt);
-          setEndDate(result.list[39].dt_txt);
-          setLoading(false);
-        });
+        getData(query)
+          .then((result) => {
+            initAllTemperatures(result.list);
+            setQuery("");
+            setCountryTwoCharacter(result.city.country);
+            setIcon(result.list[0].weather[0].icon);
+            setFirstDate(result.list[0].dt_txt);
+            setEndDate(result.list[39].dt_txt);
+            setLoading(false);
+          })
+          .catch(function () {
+            console.log("error");
+            setLoading(false);
+            setError(true);
+          });
       }
     }
   };
@@ -73,7 +82,7 @@ const App = () => {
         icon={icon}
         loading={loading}
       />
-      {countryTyped == countryTwoCharacter ? (
+      {countryTyped == countryTwoCharacter && allTemperatures ? (
         <div>
           <WeatherDisplayAverage
             allTemperatures={allTemperatures}
@@ -83,6 +92,11 @@ const App = () => {
           />
           <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>
+      ) : countryTyped != countryTwoCharacter ||
+        loading == false ||
+        countryTwoCharacter ||
+        error ? (
+        <div className="error">Error: City not found</div>
       ) : (
         ""
       )}

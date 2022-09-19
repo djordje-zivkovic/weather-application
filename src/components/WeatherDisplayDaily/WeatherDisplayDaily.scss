@@ -1,11 +1,13 @@
 @import "../../scss/variables.scss";
 .weatherDisplayDailyContainer {
+  font-family: sans-serif;
   display: flex;
   gap: 1em;
 }
 
 .weekday {
   color: $navyBlue;
+  font-weight: bolder;
 }
 
 .average-temp-number {
