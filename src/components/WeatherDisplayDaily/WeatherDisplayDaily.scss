@@ -1,8 +1,14 @@
 @import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
 .weatherDisplayDailyContainer {
   font-family: sans-serif;
   display: flex;
   gap: 1em;
+  @include mq("to", 600) {
+    margin: 50px 0px;
+    flex-direction: column;
+  }
 }
 
 .weekday {

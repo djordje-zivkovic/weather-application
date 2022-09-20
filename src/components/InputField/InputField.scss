@@ -1,5 +1,5 @@
 @import "../../scss/variables.scss";
-
+@import "../../scss/mixins.scss";
 .input-field {
   background-color: $lighterGray;
   border-radius: 10px;
@@ -7,6 +7,10 @@
   padding: 10px;
   display: flex;
   max-height: 51px;
+
+  @include mq("to", 600) {
+    position: sticky;
+  }
 
   > img {
     margin: auto;
