@@ -4,7 +4,7 @@
 // NAPOMENA!!!
 // Api daje samo podatke za vrijeme svakih 3 sata u narednih 5 dana
 // Za nas zadatak mi nemamo tacno dobijene podatke koje nam trebaju, nemamo dovoljno dana
-// ni glavnu temperaturu za svaki dan.
+// ni glavnu temperaturu za svaki dan..
 
 // Iz api-ja dobijamo niz od 40 elemenata, uzeo sam da je prvih 8 elemenata za prvi dan, drugih osam
 // za drugih i tako dalje.
