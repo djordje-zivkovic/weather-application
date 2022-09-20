@@ -1,5 +1,18 @@
+// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+// example for Belgrade https://api.openweathermap.org/data/2.5/forecast?q=Belgrade&units=metric&APPID=f6a2fb3e9764cc4cc8fa3044874aa2c4
+
+// NAPOMENA!!!
+// Api daje samo podatke za vrijeme svakih 3 sata u narednih 5 dana
+// Za nas zadatak mi nemamo tacno dobijene podatke koje nam trebaju, nemamo dovoljno dana
+// ni glavnu temperaturu za svaki dan.
+
+// Iz api-ja dobijamo niz od 40 elemenata, uzeo sam da je prvih 8 elemenata za prvi dan, drugih osam
+// za drugih i tako dalje.
+
+// Zatim smo kao glavnu prosjecnu temperaturu uzeli samo prosjek iz svih 40 elemenata
+// A prosjek za svaki dan uzeli kao prosjek od tih 8 elemenata
+
 const api = {
-  // prebaciti key u neki konfiguracioni .txt fajl
   key: "f6a2fb3e9764cc4cc8fa3044874aa2c4",
   base: "https://api.openweathermap.org/data/2.5/",
 };
@@ -9,12 +22,3 @@ export const getData = (query) => {
     `${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`
   ).then((res) => res.json());
 };
-
-// Kupi za 5 dana, i daje vrijeme svaki 3 sata.
-
-// kupim podatke za svaki dan u 12:00 casova, jer nemam mogucnost drugaciju vrijednost da uzmem
-
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-// example for Belgrade https://api.openweathermap.org/data/2.5/forecast?q=Belgrade&units=metric&APPID=f6a2fb3e9764cc4cc8fa3044874aa2c4
-
-// result.list.
