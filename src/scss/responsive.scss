@@ -1,0 +1,5 @@
+@mixin responsive($resolutionMin) {
+  @media (max-width: #{$resolutionMin}px) {
+    @content;
+  }
+}

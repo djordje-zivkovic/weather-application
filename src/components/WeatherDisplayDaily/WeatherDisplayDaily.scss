@@ -1,12 +1,13 @@
 @import "../../scss/variables.scss";
-@import "../../scss/mixins.scss";
+@import "../../scss/responsive.scss";
 
 .weatherDisplayDailyContainer {
   font-family: sans-serif;
   display: flex;
   gap: 1em;
-  @include mq("to", 600) {
-    margin: 50px 0px;
+
+  @include responsive(490) {
+    margin: 20px 0px;
     flex-direction: column;
   }
 }
