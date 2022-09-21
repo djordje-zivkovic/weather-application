@@ -6,11 +6,10 @@
 // Za nas zadatak mi nemamo tacno dobijene podatke koje nam trebaju, nemamo dovoljno dana
 // ni glavnu temperaturu za svaki dan..
 
-// Iz api-ja dobijamo niz od 40 elemenata, uzeo sam da je prvih 8 elemenata za prvi dan, drugih osam
-// za drugih i tako dalje.
+// Iz api-ja dobijamo niz od 40 elemenata, uzeo sam da je prvih 8 elemenata za prvi dan, drugih osam elemenata za drugi dan i tako dalje.
 
 // Zatim smo kao glavnu prosjecnu temperaturu uzeli samo prosjek iz svih 40 elemenata
-// A prosjek za svaki dan uzeli kao prosjek od tih 8 elemenata
+// A prosjek za svaki dan uzeli kao prosjek od 8 elemenata
 
 const api = {
   key: "f6a2fb3e9764cc4cc8fa3044874aa2c4",

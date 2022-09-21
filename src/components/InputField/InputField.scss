@@ -5,7 +5,6 @@
   box-shadow: 5px 5px 10px 5px $inputShadow;
   padding: 13px;
   display: flex;
-  // max-height: 51px;
 
   > img {
     margin: auto;
@@ -15,8 +14,6 @@
 }
 
 .input-flag {
-  // height: 100%;
-
   font-weight: bold;
   color: $darkGray;
 
@@ -39,9 +36,9 @@
   outline: none;
   margin-left: 10px;
 
-  > .input-city-field {
+  .input-city-field {
     border-color: $lightGray;
-    border-radius: 5px;
+    border-radius: 15px;
     border-style: solid;
     border-width: 1px;
     padding-right: 33px;
@@ -54,7 +51,7 @@
 
     &:hover {
       border-color: rgba($lightBlue, $alpha: 0.8);
-      box-shadow: 0px 0px 6px 1px rgba($lightBlue, $alpha: 0.8);
+      box-shadow: 2px 2px 10px 1px rgba($lightBlue, $alpha: 1);
     }
   }
 
@@ -67,7 +64,7 @@
 
     .loading-icon {
       height: 20px;
-      animation: rotation 1s infinite linear;
+      animation: rotate 1s infinite forwards;
     }
 
     .search-icon {
@@ -80,11 +77,11 @@
   }
 }
 
-@keyframes rotation {
+@keyframes rotate {
   from {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(359deg);
+    transform: rotate(360deg);
   }
 }

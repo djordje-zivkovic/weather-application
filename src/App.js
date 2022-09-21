@@ -1,16 +1,16 @@
 import InputField from "./components/InputField/InputField";
 import WeatherDisplayAverage from "./components/WeatherDisplayAverage/WeatherDisplayAverage";
 import WeatherDisplayDaily from "./components/WeatherDisplayDaily/WeatherDisplayDaily";
-import { getData } from "./API/Api";
+import { getData } from "./api/api";
 import "./App.scss";
 import { useEffect, useState } from "react";
 
 const App = () => {
+  // words in input
   const [query, setQuery] = useState("");
-
   // list of temperatures for 5 days - 40 temperatures
   const [allTemperatures, setAllTemperatures] = useState([]);
-  // country code from API
+  // country code from api
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
   // country code from flag select
   const [countryTyped, setCountryTyped] = useState("");
@@ -18,7 +18,7 @@ const App = () => {
   const [icon, setIcon] = useState("");
   // get AverageTemp for gradient
   const [AverageTemp, setAverageTemp] = useState();
-  // get date from API{{
+  // get date from api
   const [endDate, setEndDate] = useState("");
   const [firstDate, setFirstDate] = useState("");
   // from moment API starts to fetch to getting all data needed
