@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
+import { getData } from "./api/api";
 import InputField from "./components/InputField/InputField";
 import WeatherDisplayAverage from "./components/WeatherDisplayAverage/WeatherDisplayAverage";
 import WeatherDisplayDaily from "./components/WeatherDisplayDaily/WeatherDisplayDaily";
-import { getData } from "./api/api";
 import "./App.scss";
-import { useEffect, useState } from "react";
 
 const App = () => {
   // words in input
@@ -27,26 +27,23 @@ const App = () => {
   const [error, setError] = useState(false);
 
   const submit = () => {
-    {
-      if (query) {
-        setLoading(true);
-        getData(query)
-          .then((result) => {
-            initAllTemperatures(result.list);
-            setQuery("");
-            setCountryTwoCharacter(result.city.country);
-            setIcon(result.list[0].weather[0].icon);
-            setFirstDate(result.list[0].dt_txt);
-            setEndDate(result.list[39].dt_txt);
-          })
-          .catch(function () {
-            console.log(error);
-            setError(true);
-          })
-          .finally(function () {
-            setLoading(false);
-          });
-      }
+    if (query) {
+      setLoading(true);
+      getData(query)
+        .then((result) => {
+          initAllTemperatures(result.list);
+          setQuery("");
+          setCountryTwoCharacter(result.city.country);
+          setIcon(result.list[0].weather[0].icon);
+          setFirstDate(result.list[0].dt_txt);
+          setEndDate(result.list[39].dt_txt);
+        })
+        .catch(function () {
+          setError(true);
+        })
+        .finally(function () {
+          setLoading(false);
+        });
     }
   };
 
@@ -57,7 +54,6 @@ const App = () => {
   };
 
   const initAllTemperatures = (temperatureList) => {
-    console.log(temperatureList);
     const temperatures = temperatureList?.map((periodTemperature) => {
       return periodTemperature.main.temp;
     });
@@ -67,9 +63,9 @@ const App = () => {
   return (
     <div
       style={{
-        background: `linear-gradient(100deg, #123787 0%, #0ECED2 ${
+        background: `linear-gradient(100deg, #0f4897 , #159ae5 ${
           AverageTemp ? 50 - AverageTemp : 50
-        }%, #FA9454 100%`,
+        }%, #fe9859`,
       }}
       className="App"
     >
@@ -83,7 +79,7 @@ const App = () => {
         icon={icon}
         loading={loading}
       />
-      {countryTyped == countryTwoCharacter && allTemperatures ? (
+      {countryTyped === countryTwoCharacter && allTemperatures ? (
         <div>
           <WeatherDisplayAverage
             allTemperatures={allTemperatures}
@@ -93,8 +89,8 @@ const App = () => {
           />
           <WeatherDisplayDaily allTemperatures={allTemperatures} />
         </div>
-      ) : (countryTyped != countryTwoCharacter &&
-          loading == false &&
+      ) : (countryTyped !== countryTwoCharacter &&
+          loading === false &&
           countryTwoCharacter) ||
         error ? (
         <div className="error">Error: City not found</div>

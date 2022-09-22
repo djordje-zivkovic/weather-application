@@ -16,8 +16,9 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
-export const getData = (query) => {
-  return fetch(
+export const getData = async (query) => {
+  const res = await fetch(
     `${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`
-  ).then((res) => res.json());
+  );
+  return await res.json();
 };

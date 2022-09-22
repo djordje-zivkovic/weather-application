@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./InputField.scss";
 import ReactFlagsSelect from "react-flags-select";
 import customLabels from "../../assets/custom-labels";
 import search_icon from "../../assets/search_icon.svg";
 import loading_icon from "../../assets/loading_icon.svg";
+import "./InputField.scss";
 
 const InputField = (props) => {
   //mora biti dvokarakterni
@@ -15,7 +15,7 @@ const InputField = (props) => {
       <img
         className="icon"
         src={`https://openweathermap.org/img/w/${
-          props.icon && country == props.countryTwoCharacter
+          props.icon && country === props.countryTwoCharacter
             ? props.icon
             : "01d"
         }.png`}

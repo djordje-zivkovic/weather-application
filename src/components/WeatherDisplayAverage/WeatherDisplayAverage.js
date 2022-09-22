@@ -46,21 +46,21 @@ const WeatherDisplayAverage = ({
       {totalAverageTemperature && firstDateState && endDateState ? (
         <div>
           <div className="date">
-            {firstMonth != endMonth &&
-            firstDateState.getFullYear() != endDateState.getFullYear() ? (
+            {firstMonth !== endMonth &&
+            firstDateState.getFullYear() !== endDateState.getFullYear() ? (
               <div>
                 {firstDateState.getDate()} {firstMonth}{" "}
                 {firstDateState.getFullYear()} - {endDateState.getDate()}{" "}
                 {endMonth} {endDateState.getFullYear()}
               </div>
-            ) : firstMonth == endMonth &&
-              firstDateState.getFullYear() == endDateState.getFullYear() ? (
+            ) : firstMonth === endMonth &&
+              firstDateState.getFullYear() === endDateState.getFullYear() ? (
               <div>
                 {firstMonth} {firstDateState.getDate()} -{" "}
                 {endDateState.getDate()} {firstDateState.getFullYear()}
               </div>
-            ) : firstMonth != endMonth &&
-              firstDateState.getFullYear() == endDateState.getFullYear() ? (
+            ) : firstMonth !== endMonth &&
+              firstDateState.getFullYear() === endDateState.getFullYear() ? (
               <div>
                 {firstDateState.getDate()} {firstMonth} -{" "}
                 {endDateState.getDate()} {endMonth} {endDateState.getFullYear()}
