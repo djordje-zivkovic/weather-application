@@ -18,7 +18,7 @@ const App = () => {
   const [icon, setIcon] = useState("");
   // get AverageTemp for gradient
   const [AverageTemp, setAverageTemp] = useState();
-  // get date from api
+  // get date from API{{
   const [endDate, setEndDate] = useState("");
   const [firstDate, setFirstDate] = useState("");
   // from moment API starts to fetch to getting all data needed
@@ -38,12 +38,13 @@ const App = () => {
             setIcon(result.list[0].weather[0].icon);
             setFirstDate(result.list[0].dt_txt);
             setEndDate(result.list[39].dt_txt);
-            setLoading(false);
           })
           .catch(function () {
-            console.log("error");
-            setLoading(false);
+            console.log(error);
             setError(true);
+          })
+          .finally(function () {
+            setLoading(false);
           });
       }
     }
