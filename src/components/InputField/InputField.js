@@ -8,7 +8,6 @@ import "./InputField.scss";
 const InputField = (props) => {
   //mora biti dvokarakterni
   const [country, setCountry] = useState("NL");
-  const value = true;
 
   return (
     <div className="input-field">
