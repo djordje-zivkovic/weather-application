@@ -6,21 +6,18 @@ const WeatherDisplayDaily = ({ allTemperatures }) => {
   const [dailyAverageTemperatures, setDailyAverageTemperatures] = useState();
 
   const initDailyAverageTemperature = (allTemperatures) => {
-    if (allTemperatures.length) {
-      const temperaturesCopy = [...allTemperatures];
-      const dailyAverageTemperatureList = [];
-      let dailyTemperaturesList = [];
-      for (let i = 0; i < allTemperatures.length / 8; i++) {
-        dailyTemperaturesList.push(temperaturesCopy.splice(0, 8));
-      }
-      dailyTemperaturesList.map((dailyTemperatures) => {
-        const dailyTemperature =
-          dailyTemperatures.reduce((a, b) => a + b, 0) /
-          dailyTemperatures.length;
-        dailyAverageTemperatureList.push(dailyTemperature.toFixed(2));
-      });
-      setDailyAverageTemperatures(dailyAverageTemperatureList);
+    const temperaturesCopy = [...allTemperatures];
+    const dailyAverageTemperatureList = [];
+    let dailyTemperaturesList = [];
+    for (let i = 0; i < allTemperatures.length / 8; i++) {
+      dailyTemperaturesList.push(temperaturesCopy.splice(0, 8));
     }
+    dailyTemperaturesList.map((dailyTemperatures) => {
+      const dailyTemperature =
+        dailyTemperatures.reduce((a, b) => a + b, 0) / dailyTemperatures.length;
+      dailyAverageTemperatureList.push(dailyTemperature.toFixed(2));
+    });
+    setDailyAverageTemperatures(dailyAverageTemperatureList);
   };
 
   useEffect(() => {
