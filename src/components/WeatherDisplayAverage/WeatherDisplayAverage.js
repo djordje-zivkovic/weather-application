@@ -29,12 +29,10 @@ const WeatherDisplayAverage = ({
   }, [firstDate, endDate]);
 
   const initTotalAverageTemperatures = (allTemperatures) => {
-    if (allTemperatures.length) {
-      const _totalAverageTemperature =
-        allTemperatures.reduce((a, b) => a + b, 0) / allTemperatures.length;
-      setTotalAverageTemperature(_totalAverageTemperature.toFixed(0));
-      setAverageTemp(_totalAverageTemperature.toFixed(0));
-    }
+    const _totalAverageTemperature =
+      allTemperatures.reduce((a, b) => a + b, 0) / allTemperatures.length;
+    setTotalAverageTemperature(_totalAverageTemperature.toFixed(0));
+    setAverageTemp(_totalAverageTemperature.toFixed(0));
   };
 
   useEffect(() => {

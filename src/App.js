@@ -9,7 +9,7 @@ const App = () => {
   // words in input
   const [query, setQuery] = useState("");
   // list of temperatures for 5 days - 40 temperatures
-  const [allTemperatures, setAllTemperatures] = useState([]);
+  const [allTemperatures, setAllTemperatures] = useState();
   // country code from api
   const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
   // country code from flag select
