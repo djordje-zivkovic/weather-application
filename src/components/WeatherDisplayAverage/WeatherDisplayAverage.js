@@ -9,7 +9,6 @@ const WeatherDisplayAverage = ({
 }) => {
   // average temperature for 5 days
   const [totalAverageTemperature, setTotalAverageTemperature] = useState();
-  //potrebno je fino sortirati datume kao sto zadatak nalaze
   const [firstDateState, setFirstDateState] = useState();
   const [endDateState, setEndDateState] = useState();
   const [endMonth, setEndMonth] = useState();

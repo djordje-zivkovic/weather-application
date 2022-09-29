@@ -11,7 +11,7 @@ const App = () => {
   // list of temperatures for 5 days - 40 temperatures
   const [allTemperatures, setAllTemperatures] = useState();
   // country code from api
-  const [countryTwoCharacter, setCountryTwoCharacter] = useState("");
+  const [countryTwoCharacter, setCountryTwoCharacter] = useState(""); // izbaciti string da se odma napravi
   // country code from flag select
   const [countryTyped, setCountryTyped] = useState("");
   // icon
@@ -79,7 +79,7 @@ const App = () => {
         icon={icon}
         loading={loading}
       />
-      {countryTyped === countryTwoCharacter && allTemperatures ? (
+      {countryTyped === countryTwoCharacter && allTemperatures ? ( // pokusati bez AllTemperatures
         <div>
           <WeatherDisplayAverage
             allTemperatures={allTemperatures}
