@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getData } from "./api/api";
+import { getData } from "./API/Api";
 import InputField from "./components/InputField/InputField";
 import WeatherDisplayAverage from "./components/WeatherDisplayAverage/WeatherDisplayAverage";
 import WeatherDisplayDaily from "./components/WeatherDisplayDaily/WeatherDisplayDaily";
