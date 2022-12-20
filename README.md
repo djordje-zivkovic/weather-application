@@ -1,1 +1,2 @@
-Project for practice
+1. npm i
+2. npm start
