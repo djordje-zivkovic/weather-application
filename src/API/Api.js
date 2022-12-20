@@ -12,7 +12,7 @@
 // A prosjek za svaki dan uzeli kao prosjek od 8 elemenata
 
 const api = {
-  key: "f6a2fb3e9764cc4cc8fa3044874aa2c4",
+  key: process.env.REACT_APP_API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
